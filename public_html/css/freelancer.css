@@ -40,7 +40,6 @@ hr.card-light,
 hr.card-primary {
   padding: 0;
   border: none;
-  /* border-top: solid 5px; */
   text-align: center;
   max-width: 500px;
   margin: 25px auto 30px;
@@ -81,6 +80,12 @@ header .container {
   padding-top: 100px;
   padding-bottom: 50px;
 }
+@media (min-width: 768px) {
+  header .container {
+    padding-top: 200px;
+    padding-bottom: 100px;
+  }
+}
 header img {
   display: block;
   margin: 0 auto 20px;
@@ -92,18 +97,16 @@ header .intro-text .name {
   /*font-weight: 700;*/
   font-size: 2em;
 }
+@media (min-width: 768px) {
+  header .intro-text .name {
+    font-size: 4.75em;
+  }
+}
 header .intro-text .skills {
   font-size: 1.25em;
   font-weight: 300;
 }
 @media (min-width: 768px) {
-  header .container {
-    padding-top: 200px;
-    padding-bottom: 100px;
-  }
-  header .intro-text .name {
-    font-size: 4.75em;
-  }
   header .intro-text .skills {
     font-size: 1.75em;
   }
@@ -250,10 +253,10 @@ section.success h2 {
     margin: 0 0 30px;
   }
 }
-.form-control::placeholder {
+.form-control {
   color: white!important;
 }
-.form-control {
+.form-control::placeholder {
   color: white!important;
 }
 .floating-label-form-group {
@@ -347,7 +350,11 @@ footer .footer-below {
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
-.btn-primary.active,
+.btn-primary.active {
+  color: white;
+  background-color: #1a242f;
+  border-color: #161f29;
+}
 .open .dropdown-toggle.btn-primary {
   color: white;
   background-color: #1a242f;
