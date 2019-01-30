@@ -2,7 +2,7 @@
  * Afin Cipher
  * Author: Teo Gonzalez Calzada [@thblckjkr]
  * License: MIT
- * Ci = (a * Mi + b )mod n
+ * ci = (a * Mi + b )mod n
  */
 var AfinCipher = function(opts){
    var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
@@ -16,7 +16,7 @@ var AfinCipher = function(opts){
       if ( !isPrime(key1) || !isPrime(key2) ){
          throw new Error('Keys aren\'t coprimes');
       }
-      a = key1; b = key2;
+      a = parseInt(key1); b = parseInt(key2);
       validated = true;
    }
 
@@ -41,7 +41,7 @@ var AfinCipher = function(opts){
          ciphered.push( alphabet[ci] );
       }
 
-      // Convert the array to string
+      // Convert the array of letters to string
       return ciphered.join("");
    }
 
@@ -64,7 +64,7 @@ var AfinCipher = function(opts){
          // D(y) = a^-1 * (y - b) mod 26
          // let ci = mod((a_1 * (numbers[i] - b)), alphabet.length);
          
-         let ci = (numbers[i] - b + 26) * a_1 % 26
+         let ci = (numbers[i] - b + alphabet.length) * a_1 % alphabet.length
          // Get the letter and push it to the final
          deciphered.push( alphabet[ci] );
       }
