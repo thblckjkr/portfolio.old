@@ -131,7 +131,7 @@
    window.addEventListener( 'unload', function () { galite('send', 'timing', 'JS Dependencies', 'unload') })
 </script>
 <!-- Script for cypher here -->
-<script src="afin.js"></script>
+<script src="affine.js"></script>
 <script type="text/javascript">
    $('#cipher').on("click", function(){
       let text = $('#text').val();
@@ -139,7 +139,7 @@
          return false;
       
       // Create the constructor
-      var c = new AfinCipher();
+      var c = new AffineCipher();
       
       // Set the keys, abort if not fine
       if(!getAndSetKeys(c)){
@@ -157,7 +157,7 @@
          return false;
       
       // Create the constructor
-      var c = new AfinCipher();
+      var c = new AffineCipher();
       
       // Set the keys, abort if not fine
       if(!getAndSetKeys(c)){

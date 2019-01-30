@@ -1,10 +1,33 @@
 /**
- * Afin Cipher
- * Author: Teo Gonzalez Calzada [@thblckjkr]
- * License: MIT
- * ci = (a * Mi + b )mod n
+ * Affine cipher class. (use period)
+ *
+ * Class to cipher text using the affine method. (use period)
+ *
+ * @file   This files defines the AffineCipher class.
+ * @author Teo Gonzalez Calzada [thblckjkr].
+ * @since  0.0.1
  */
-var AfinCipher = function(){
+/**
+ * Affine Cipher.
+ *
+ * Class made to make the affine cipher, . (use period)
+ *
+ * @access     private
+ *
+ * @class
+ * @see  Function/class relied on
+ * @link URL
+ * @global
+ *
+ * @param {type}   var           Description.
+ * @param {type}   [var]         Description of optional variable.
+ * @param {type}   [var=default] Description of optional variable with default variable.
+ * @param {Object} objectVar     Description.
+ * @param {type}   objectVar.key Description of a key in the objectVar parameter.
+ * 
+ * @return {type} Description.
+ */
+var AffineCipher = function(){
    var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 
    var a, b; // Where the keys will be stored. Private
