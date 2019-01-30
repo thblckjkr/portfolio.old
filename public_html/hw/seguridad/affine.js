@@ -1,47 +1,44 @@
 /**
- * Affine cipher class. (use period)
+ * Affine Cipher Class.
  *
- * Class to cipher text using the affine method. (use period)
- *
+ * Class to cipher text using the affine method.
+ * 
+ * @version 0.0.1
  * @file   This files defines the AffineCipher class.
  * @author Teo Gonzalez Calzada [thblckjkr].
- * @since  0.0.1
  */
-/**
- * Affine Cipher.
- *
- * Class made to make the affine cipher, . (use period)
- *
- * @access     private
- *
- * @class
- * @see  Function/class relied on
- * @link URL
- * @global
- *
- * @param {type}   var           Description.
- * @param {type}   [var]         Description of optional variable.
- * @param {type}   [var=default] Description of optional variable with default variable.
- * @param {Object} objectVar     Description.
- * @param {type}   objectVar.key Description of a key in the objectVar parameter.
- * 
- * @return {type} Description.
- */
+
 var AffineCipher = function(){
    var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 
    var a, b; // Where the keys will be stored. Private
    var validated = false; // Start as a non vaidated class
 
-   this.setKeys = function(key1, key2){
+   /**
+    * Set the keys to decipher the text.
+    * 
+    * @param   {number}    akey
+    * @param   {number}    bkey
+    * 
+    * @returns {boolean}   [true] if worked, throws an error if not.
+    */
+   this.setKeys = function(akey, bkey){
       // Get the keys, check if are primes, and set if they are, throw an error if not
-      if ( !isPrime(key1) || !isPrime(key2) ){
+      if ( !isPrime(akey) || !isPrime(bkey) ){
          throw new Error('Keys aren\'t coprimes');
       }
-      a = parseInt(key1); b = parseInt(key2);
+      a = parseInt(akey); b = parseInt(bkey);
       validated = true;
+      return true;
    }
 
+   /**
+    * Ciphers text using the affine cipher algorithm.
+    * 
+    * @param   {string} text  the text to cipher.
+    * 
+    * @returns {string} Returns the ciphered text, without spaces.
+    */
    this.cipher = function(text){
       if(!validated)
          throw new Error("Keys undefined");
@@ -66,6 +63,13 @@ var AffineCipher = function(){
       return ciphered.join("");
    }
 
+   /**
+    * Deciphers text using the affine cipher algorithm.
+    * 
+    * @param   {string} text  the text to be deciphered.
+    * 
+    * @returns {string} Returns the deciphered text, without spaces.
+    */
    this.decipher = function(enc){
       if(!validated)
          throw new Error("Key undefined");
@@ -92,6 +96,13 @@ var AffineCipher = function(){
       return deciphered.join("");
    }
 
+   /**
+    * Convert the given string into numbers of the defined alphabet.
+    * 
+    * @param  {string}  text
+    * 
+    * @returns {array}  Returns an array of numbers.
+    */
    var toNumbers = function(text){
       var numbers = [];
       let letters = text.toLowerCase().split("");
@@ -107,6 +118,13 @@ var AffineCipher = function(){
       return numbers;
    }
 
+   /**
+    * Gets the inverse of the given number.
+    * 
+    * @param  {number}  a
+    * 
+    * @returns {number} 0 if the number can't be found, or the inverse.
+    */
    var findInverse = function(a){
       for (var i = 1; i <= 100; i++)
       {
@@ -118,6 +136,13 @@ var AffineCipher = function(){
       return 0;
    }
 
+   /**
+    * Check if the given number is prime.
+    * 
+    * @param  {number}     input
+    * 
+    * @returns {boolean}   [true] if the number is prime.
+    */
    var isPrime = function(input) {
       let prime = true;
       for (let i = 2; i <= Math.sqrt(input); i++) {
