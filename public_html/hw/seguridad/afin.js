@@ -4,15 +4,14 @@
  * License: MIT
  * ci = (a * Mi + b )mod n
  */
-var AfinCipher = function(opts){
+var AfinCipher = function(){
    var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
-   
-   if(typeof opts !== "undefined")
-      var spacing = opts.includeSpaces || false;
-   
-   var a, b;
-   var validated = false;
+
+   var a, b; // Where the keys will be stored. Private
+   var validated = false; // Start as a non vaidated class
+
    this.setKeys = function(key1, key2){
+      // Get the keys, check if are primes, and set if they are, throw an error if not
       if ( !isPrime(key1) || !isPrime(key2) ){
          throw new Error('Keys aren\'t coprimes');
       }
@@ -27,8 +26,7 @@ var AfinCipher = function(opts){
       var ciphered = [];
 
       // Remove spaces if is required
-      if(spacing == false)
-         text = text.replace(/\s/g, '');
+      text = text.replace(/\s/g, '');
 
       // Convert the text to numbers
       let numbers = toNumbers(text);
@@ -62,7 +60,6 @@ var AfinCipher = function(opts){
       for(let i = 0; i < numbers.length; i++){
          // Get the index of the ciphered letter
          // D(y) = a^-1 * (y - b) mod 26
-         // let ci = mod((a_1 * (numbers[i] - b)), alphabet.length);
          
          let ci = (numbers[i] - b + alphabet.length) * a_1 % alphabet.length
          // Get the letter and push it to the final

@@ -96,14 +96,6 @@
                </div>
                
                <div class="form-row">
-                  <div class="form-group">
-                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="includeSpaces">
-                        <label class="form-check-label" for="includeSpaces">
-                           Preserve spaces?
-                        </label>
-                     </div>
-                  </div>
                   <button type="button" class="btn btn-secondary" id="cipher">Cipher</button>
                   <button type="button" class="btn btn-secondary" id="decipher">Decipher</button>
                </div>
@@ -141,16 +133,15 @@
 <!-- Script for cypher here -->
 <script src="afin.js"></script>
 <script type="text/javascript">
-   // create the constructor and pass options
    $('#cipher').on("click", function(){
       let text = $('#text').val();
       if( text == "" )
          return false;
       
-      var c = new AfinCipher({
-         includeSpaces : $('#includeSpaces').is(':checked')
-      });
+      // Create the constructor
+      var c = new AfinCipher();
       
+      // Set the keys, abort if not fine
       if(!getAndSetKeys(c)){
          return true;
       }
@@ -165,10 +156,10 @@
       if( text == "" )
          return false;
       
-      var c = new AfinCipher({
-         includeSpaces : $('#includeSpaces').is(':checked')
-      });
+      // Create the constructor
+      var c = new AfinCipher();
       
+      // Set the keys, abort if not fine
       if(!getAndSetKeys(c)){
          return true;
       }
@@ -183,6 +174,7 @@
       let a = $('#aKey').val();
       let b = $('#bKey').val();
       
+      // Try setting them, abort if not works
       try {
          c.setKeys(a, b);
          return true;
@@ -192,6 +184,7 @@
       }
    }
 </script>
+<!-- / Script for cypher here -->
    
 </body>
 </html>
