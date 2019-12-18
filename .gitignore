@@ -1,2 +1,3 @@
 # Ignore Visual Code generated files
 .vscode
+vsftpd.conf
